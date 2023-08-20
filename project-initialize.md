@@ -6,7 +6,7 @@
 
 2. shop.zip 파일을 로컬PC 로 다운로드 받은 후, 압축을 해제한다.
 ```
-$ springboot-shop % ls -la
+$ shop % ls -la
 total 64
 drwxr-xr-x@ 10 soonbeom  staff   320  8 20 18:54 .
 drwxr-x---+ 93 soonbeom  staff  2976  8 20 19:03 ..
