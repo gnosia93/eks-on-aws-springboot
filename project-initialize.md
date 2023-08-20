@@ -124,7 +124,7 @@ mysql> show tables;
 1 row in set (0.01 sec)
 ```    
 
-### 5. springboot properties.yml 생성 ###
+### 5. springboot application.yml 파일 생성 ###
 
 
 ## 트러블 슈팅 ##
