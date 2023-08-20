@@ -29,7 +29,7 @@ drwxr-xr-x@  4 soonbeom  staff   128  8 20 18:54 src
 
   InteliJ의 Gradle JVM 버전을 17 버전을 설정한다. 맥의 경우 상단 InteliJ IDEA 메뉴 하단의 Preferences 를 클릭하면 아래와 같은 팝업창이 뜬다.
     
-
+  ![](https://github.com/gnosia93/eks-on-aws-springboot/blob/main/project-gradle-jvm17.png)
   
 
 ## 참고자료 ##
