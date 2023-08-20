@@ -49,7 +49,7 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
 mysql> create database shop;
 mysql> use shop;
-mysql> create table personal_info( 
+mysql> create table member( 
      id char(12), 
      password char(12) not null, 
      name char(10) not null, 
