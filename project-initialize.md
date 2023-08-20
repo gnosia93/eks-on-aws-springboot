@@ -23,7 +23,7 @@ drwxr-xr-x@  4 soonbeom  staff   128  8 20 18:54 src
 3. InteliJ 로 springboot-shop 프로젝트를 오픈한다.
 ![](https://github.com/gnosia93/eks-on-aws-springboot/blob/main/project-shop.png)
 
-4. 로컬 PC에 MySQL 설치
+4. 로컬 PC에 MySQL 설치  
 https://downloads.mysql.com/archives/community/    
 
 ## 트러블 슈팅 ##
