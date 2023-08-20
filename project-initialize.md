@@ -124,8 +124,11 @@ mysql> show tables;
 1 row in set (0.01 sec)
 ```    
 
-### 5. springboot application.yml 파일 생성 ###
+### 5. springboot DB 연결 설정 ###
+[build.gradle]
+![](https://github.com/gnosia93/eks-on-aws-springboot/blob/main/project-build.gradle-mysql.png)
 
+[application.yml]
 ![](https://github.com/gnosia93/eks-on-aws-springboot/blob/main/project-application-yml.png)
 
 ## 트러블 슈팅 ##
