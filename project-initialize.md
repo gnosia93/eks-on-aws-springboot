@@ -20,8 +20,10 @@ drwxr-xr-x@  3 soonbeom  staff    96  8 20 18:54 gradle
 drwxr-xr-x@  4 soonbeom  staff   128  8 20 18:54 src
 ```
 
-3. InteliJ 로 springboot-shop 프로젝트를 오픈한다.  
+3. InteliJ 로 springboot-shop 프로젝트를 오픈한다.
 
+4. MySQL 설치
+   
 
 ## 트러블 슈팅 ##
 
