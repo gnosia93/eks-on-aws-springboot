@@ -82,6 +82,7 @@ mysql> select host, user, account_locked from user;
 +-----------+------------------+----------------+
 5 rows in set (0.00 sec)
 
+mysql> grant all privileges ON shop.* TO shop@'%';
 mysql> quit
 Bye
 
