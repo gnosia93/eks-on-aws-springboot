@@ -31,6 +31,9 @@ drwxr-xr-x@  4 soonbeom  staff   128  8 20 18:54 src
     
   ![](https://github.com/gnosia93/eks-on-aws-springboot/blob/main/project-gradle-jvm17.png)
   
+* [Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured](https://yanacoding.tistory.com/entry/Spring-Boot-%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-%EC%97%90%EB%9F%AC-Failed-to-configure-a-DataSource-url-attribute-is-not-specified-and-no-embedded-datasource-could-be-configured-DB%EC%97%B0%EA%B2%B0-%ED%95%98%EC%A7%80-%EC%95%8A%EC%9D%84-%EB%95%8C)
+
+
 
 ## 참고자료 ##
 
