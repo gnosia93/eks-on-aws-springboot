@@ -145,5 +145,7 @@ mysql> show tables;
 
 * [Mac에 MySQL 설치하기](https://losskatsu.github.io/it-infra/mysql-install-mac/#%EC%B0%B8%EA%B3%A0-%EB%A7%81%ED%81%AC)
 
-* [MySQL 유저 생성](https://nickjoit.tistory.com/144) 
+* [MySQL 유저 생성](https://nickjoit.tistory.com/144)
+
+* [MySQL application.yml 설정](https://velog.io/@minbo2002/JPA-application.yml-%EC%84%A4%EC%A0%95)
 
