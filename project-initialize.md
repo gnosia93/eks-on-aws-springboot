@@ -24,7 +24,13 @@ drwxr-xr-x@  4 soonbeom  staff   128  8 20 18:54 src
 ![](https://github.com/gnosia93/eks-on-aws-springboot/blob/main/project-shop.png)
 
 4. 로컬 PC에 MySQL 설치  
-https://downloads.mysql.com/archives/community/    
+```
+% brew install mysql
+% mysql -V
+mysql  Ver 8.1.0 for macos12.6 on arm64 (Homebrew)
+
+% mysql_secure_installation
+```    
 
 ## 트러블 슈팅 ##
 
@@ -41,3 +47,5 @@ https://downloads.mysql.com/archives/community/
 ## 참고자료 ##
 
 * [IntelliJ Springboot 프로젝트 생성 및 실행](https://velog.io/@deannn/Spring-IntelliJ-Springboot-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%83%9D%EC%84%B1-%EB%B0%8F-%EC%8B%A4%ED%96%89)
+
+* [Mac에 MySQL 설치하기](https://losskatsu.github.io/it-infra/mysql-install-mac/#%EC%B0%B8%EA%B3%A0-%EB%A7%81%ED%81%AC)
