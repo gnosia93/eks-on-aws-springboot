@@ -58,6 +58,13 @@ mysql> create table member(
      email char(32) not null, 
      PRIMARY KEY(id) 
 );
+mysql> show tables;
++----------------+
+| Tables_in_shop |
++----------------+
+| member         |
++----------------+
+1 row in set (0.01 sec)
 ```    
 
 ## 트러블 슈팅 ##
