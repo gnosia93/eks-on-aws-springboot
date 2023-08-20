@@ -65,6 +65,22 @@ mysql> show tables;
 | member         |
 +----------------+
 1 row in set (0.01 sec)
+
+mysql> create user shop@'%' identified by 'shop';
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> use mysql;
+mysql> select host, user, account_locked from user;
++-----------+------------------+----------------+
+| host      | user             | account_locked |
++-----------+------------------+----------------+
+| %         | shop             | N              |
+| localhost | mysql.infoschema | Y              |
+| localhost | mysql.session    | Y              |
+| localhost | mysql.sys        | Y              |
+| localhost | root             | N              |
++-----------+------------------+----------------+
+5 rows in set (0.00 sec)
 ```    
 
 ## 트러블 슈팅 ##
