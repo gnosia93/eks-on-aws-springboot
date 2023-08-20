@@ -25,9 +25,7 @@ drwxr-xr-x@  4 soonbeom  staff   128  8 20 18:54 src
 
 ## 트러블 슈팅 ##
 
-* [Spring] Could not resolve org.springframework.boot:spring-boot-gradle-plugin:3.1.2 해결 방법
-
-  https://effortguy.tistory.com/286
+* [Could not resolve org.springframework.boot:spring-boot-gradle-plugin:3.1.2 해결 방법](https://effortguy.tistory.com/286)
 
   InteliJ의 Gradle JVM 버전을 17 버전을 설정한다. 맥의 경우 상단 InteliJ IDEA 메뉴 하단의 Preferences 를 클릭하면 아래와 같은 팝업창이 뜬다.
     
