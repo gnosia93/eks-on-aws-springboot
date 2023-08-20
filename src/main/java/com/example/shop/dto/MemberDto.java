@@ -1,6 +1,6 @@
-package com.example.shop;
+package com.example.shop.dto;
 
-import jakarta.persistence.GeneratedValue;
+import com.example.shop.entity.Member;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
