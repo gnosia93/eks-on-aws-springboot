@@ -23,6 +23,17 @@ drwxr-xr-x@  4 soonbeom  staff   128  8 20 18:54 src
 3. InteliJ 로 springboot-shop 프로젝트를 오픈한다.  
 
 
+## 트러블 슈팅 ##
+
+* [Spring] Could not resolve org.springframework.boot:spring-boot-gradle-plugin:3.1.2 해결 방법
+
+  https://effortguy.tistory.com/286
+
+  InteliJ의 Gradle JVM 버전을 17 버전을 설정한다. 맥의 경우 상단 InteliJ IDEA 메뉴 하단의 Preferences 를 클릭하면 아래와 같은 팝업창이 뜬다.
+    
+
+  
+
 ## 참고자료 ##
 
 * [IntelliJ Springboot 프로젝트 생성 및 실행](https://velog.io/@deannn/Spring-IntelliJ-Springboot-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%83%9D%EC%84%B1-%EB%B0%8F-%EC%8B%A4%ED%96%89)
