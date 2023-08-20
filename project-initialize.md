@@ -1,10 +1,10 @@
 ## springboot 프로젝트 생성 ##
 
-1. [spring.io](https://start.spring.io/) 사이트에서 아래 그림과 같은 설정으로 프로젝트 하나를 생성한다.
+### 1. [spring.io](https://start.spring.io/) 사이트에서 아래 그림과 같은 설정으로 프로젝트 하나를 생성한다. ###
   
 ![](https://github.com/gnosia93/eks-on-aws-springboot/blob/main/project-create.png)
 
-2. shop.zip 파일을 로컬PC 로 다운로드 받은 후, 압축을 해제한다.
+### 2. shop.zip 파일을 로컬PC 로 다운로드 받은 후, 압축을 해제한다. ###
 ```
 $ shop % ls -la
 total 64
@@ -20,10 +20,10 @@ drwxr-xr-x@  3 soonbeom  staff    96  8 20 18:54 gradle
 drwxr-xr-x@  4 soonbeom  staff   128  8 20 18:54 src
 ```
 
-3. InteliJ 로 springboot-shop 프로젝트를 오픈한다.
+### 3. InteliJ 로 springboot-shop 프로젝트를 오픈한다. ###
 ![](https://github.com/gnosia93/eks-on-aws-springboot/blob/main/project-shop.png)
 
-4. 로컬 PC에 MySQL 설치  
+### 4. 로컬 PC에 MySQL 설치 ###  
 ```
 % brew install mysql
 % mysql -V
@@ -123,6 +123,9 @@ mysql> show tables;
 +----------------+
 1 row in set (0.01 sec)
 ```    
+
+### 5. springboot properties.yml 생성 ###
+
 
 ## 트러블 슈팅 ##
 
