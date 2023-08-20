@@ -126,6 +126,7 @@ mysql> show tables;
 
 ### 5. springboot application.yml 파일 생성 ###
 
+![](https://github.com/gnosia93/eks-on-aws-springboot/blob/main/project-application-yml.png)
 
 ## 트러블 슈팅 ##
 
