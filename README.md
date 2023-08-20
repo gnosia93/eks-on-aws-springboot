@@ -1,4 +1,0 @@
-# eks-on-aws-springboot
-
-
-
