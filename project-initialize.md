@@ -81,6 +81,11 @@ mysql> select host, user, account_locked from user;
 | localhost | root             | N              |
 +-----------+------------------+----------------+
 5 rows in set (0.00 sec)
+
+mysql> quit
+Bye
+
+
 ```    
 
 ## 트러블 슈팅 ##
