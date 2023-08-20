@@ -47,7 +47,17 @@ owners.
 
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
-mysql>
+mysql> create database shop;
+mysql> use shop;
+mysql> create table personal_info( 
+     id char(12), 
+     password char(12) not null, 
+     name char(10) not null, 
+     date_of_birth date not null, 
+     phone_number char(13) not null, 
+     email char(32) not null, 
+     PRIMARY KEY(id) 
+);
 ```    
 
 ## 트러블 슈팅 ##
