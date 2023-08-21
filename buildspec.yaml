@@ -8,8 +8,7 @@ phases:
     commands:
        - java -version
        - docker -v
-       - gradle -v
-  #      - curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.19.6/2021-01-05/bin/linux/amd64/kubectl
+#      - curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.19.6/2021-01-05/bin/linux/amd64/kubectl
 #      - chmod +x ./kubectl
 #      - mv ./kubectl /usr/local/bin/kubectl
 #      - mkdir ~/.kube
@@ -22,6 +21,7 @@ phases:
   build:
     commands:
       - ./gradlew bootjar
+      - ls -la *.jar
 #      - echo Building the Docker image
 #      - docker build -t $IMAGE_REPO_NAME:$IMAGE_TAG .
 #      - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
