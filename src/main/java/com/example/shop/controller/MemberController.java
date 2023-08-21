@@ -7,6 +7,8 @@ import com.example.shop.exception.MemberNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RequestMapping(value="/member")
@@ -18,23 +20,20 @@ public class MemberController {
     private MemberService memberService;
 
     @ResponseBody
-    @RequestMapping(value="/{memberId}", method= RequestMethod.GET)
-    public MemberDto findMember(@PathVariable Integer memberId) throws MemberNotFoundException {
+    @RequestMapping(value="/{memberId}", method=RequestMethod.GET)
+    public ResponseEntity<?> findMember(@PathVariable Integer memberId) throws MemberNotFoundException {
+        MemberDto memberDto = memberService.findMember(memberId);
 
-        logger.trace("trace..." + memberId);
-        logger.debug("debug...");
-        logger.info("info..." + memberId);
-        logger.warn("warn ...");
-        logger.error("error ...");
-
-        return memberService.findMember(memberId);
+        // 예외를 메시지 처리하는 방법?
+        // 현재는 500 에러로 트레이스 됨.
+        return ResponseEntity.status(HttpStatus.OK).body(memberDto);
     }
 
+    @ResponseBody
     @RequestMapping(value="/add", method= RequestMethod.POST)
-    public int addMember(@RequestBody MemberDto memberDto) {
-        Member member = memberService.add(memberDto);
-        // member 리턴값이 NULL 인경우 체크 필요.
-        return member.getMemberId();
+    public ResponseEntity<?> addMember(@RequestBody MemberDto memberDto) {
+        MemberDto addedMemberDto = memberService.add(memberDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(addedMemberDto);
     }
 
 }

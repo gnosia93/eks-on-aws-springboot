@@ -15,12 +15,24 @@ import java.util.Optional;
 @Service
 public class MemberService {
 
+    // 서비스 메소스 호출시 In/Out 는 Dto 이다.
+    // Controller 는 Entity 의 존재를 알지 못한다.
+    // 서비스는 트랜잭션을 처리한다.
+
     @Autowired
     MemberRepository memberRepository;
 
     @Transactional
-    public Member add(MemberDto memberDto) {
-        return memberRepository.save(memberDto.toEntity());
+    public MemberDto add(MemberDto memberDto) {
+        Member member = memberRepository.save(memberDto.toEntity());
+
+        return MemberDto.builder()
+                .memberId(member.getMemberId())
+                .password(member.getPassword())
+                .name(member.getName())
+                .emailAddress(member.getEmailAddress())
+                .phoneNumber(member.getPhoneNumber())
+                .build();
     }
 
     public MemberDto findMember(Integer memberId) throws MemberNotFoundException {
