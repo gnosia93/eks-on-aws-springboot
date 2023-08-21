@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -45,6 +47,46 @@ public class MemberService {
                 .name(member.getName())
                 .phoneNumber(member.getPhoneNumber())
                 .emailAddress(member.getEmailAddress())
+                .build();
+    }
+
+    public List<MemberDto> findAllMember() {
+        List<Member> memberList = memberRepository.findAll();
+        List<MemberDto> memberDtoList = new ArrayList<MemberDto>();
+
+        for (Member member : memberList ) {
+            MemberDto memberDto = MemberDto.builder()
+                    .memberId(member.getMemberId())
+                    .password(member.getPassword())
+                    .name(member.getName())
+                    .phoneNumber(member.getPhoneNumber())
+                    .emailAddress(member.getEmailAddress())
+                    .build();
+            memberDtoList.add(memberDto);
+        }
+        return memberDtoList;
+    }
+
+    public MemberDto updateMember(int id, final MemberDto memberDto) throws MemberNotFoundException {
+        Optional<Member> optMember = memberRepository.findById(id);
+        Member member = optMember.orElseThrow(MemberNotFoundException::new);
+
+        if(memberDto.getName() != null)
+            member.setName(memberDto.getName());
+        if(memberDto.getPassword() != null)
+            member.setPassword(memberDto.getPassword());
+        if(memberDto.getPhoneNumber() != null)
+            member.setPhoneNumber(memberDto.getPhoneNumber());
+        if(memberDto.getEmailAddress() != null)
+            member.setEmailAddress(memberDto.getEmailAddress());
+
+        Member savedMember = memberRepository.save(member);
+        return MemberDto.builder()
+                .memberId(savedMember.getMemberId())
+                .password(savedMember.getPassword())
+                .name(savedMember.getName())
+                .emailAddress(savedMember.getEmailAddress())
+                .phoneNumber(savedMember.getPhoneNumber())
                 .build();
     }
 }

@@ -1,6 +1,5 @@
 package com.example.shop.controller;
 
-import com.example.shop.entity.Member;
 import com.example.shop.dto.MemberDto;
 import com.example.shop.service.MemberService;
 import com.example.shop.exception.MemberNotFoundException;
@@ -10,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RequestMapping(value="/member")
 @RestController
@@ -30,10 +30,25 @@ public class MemberController {
     }
 
     @ResponseBody
+    @RequestMapping(value="/list", method=RequestMethod.GET)
+    public ResponseEntity<List<?>> listMember() {
+        List<MemberDto> memberDtolist = memberService.findAllMember();
+        return ResponseEntity.status(HttpStatus.OK).body(memberDtolist);
+    }
+
+
+    @ResponseBody
     @RequestMapping(value="/add", method= RequestMethod.POST)
     public ResponseEntity<?> addMember(@RequestBody MemberDto memberDto) {
         MemberDto addedMemberDto = memberService.add(memberDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(addedMemberDto);
+    }
+
+    @ResponseBody
+    @RequestMapping(value="/{memberId}", method=RequestMethod.PUT)
+    public ResponseEntity<?> updateMember(@PathVariable Integer memberId, @RequestBody MemberDto memberDto ) throws MemberNotFoundException {
+        MemberDto updatedMemberDto = memberService.updateMember(memberId, memberDto);
+        return ResponseEntity.status(HttpStatus.OK).body(updatedMemberDto);
     }
 
 }
