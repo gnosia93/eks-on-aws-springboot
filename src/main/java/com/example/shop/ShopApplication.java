@@ -11,5 +11,5 @@ public class ShopApplication {
 		SpringApplication.run(ShopApplication.class, args);
 	}
 
-	// codepipeline test..
+	// java -jar boot.jar --spring.profiles.active=stage
 }
