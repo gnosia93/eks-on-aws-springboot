@@ -2,7 +2,9 @@ spring:
   profiles:
     active: dev
 
+# http://localhost:8080/actuator/health
 management:
   endpoints:
     web:
-      base-path: /health
+      exposure:
+        include: health, info
