@@ -18,9 +18,6 @@ configurations {
 	}
 }
 
-
-
-
 repositories {
 	mavenCentral()
 }
