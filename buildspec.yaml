@@ -10,6 +10,7 @@ phases:
        - docker -v
        - echo ${group}
        - echo ${version}
+       - echo $(ls -la)
 
   pre_build:
     commands:
