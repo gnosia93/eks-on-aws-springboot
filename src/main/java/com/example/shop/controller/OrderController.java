@@ -30,6 +30,8 @@ public class OrderController {
 
         String prodServiceUrl = msaServiceConfiguration.getProd() + "/" + productId;
         String pointServiceUrl = msaServiceConfiguration.getPoint() + "/" + memberId;
+
+        logger.info(prodServiceUrl);
         // prod 서비스 호출
         ResponseEntity<String> prodServiceResponse = restTemplate.getForEntity(
                 prodServiceUrl, String.class);
