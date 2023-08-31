@@ -14,7 +14,3 @@ public class MsaServiceConfiguration {
         private String point;
 }
 
-/*
-msa.service.endpoint.prod : "http://localhost:3001/prod"
-msa.service.endpoint.point: "http://localhost:3000/point"
- */
