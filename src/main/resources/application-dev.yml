@@ -22,3 +22,6 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 logging.level.root : info
+
+msa.service.endpoint.prod : "http://localhost:3001/prod"
+msa.service.endpoint.point: "http://localhost:3000/point"
