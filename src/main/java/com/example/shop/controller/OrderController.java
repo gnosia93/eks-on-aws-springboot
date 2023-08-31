@@ -33,6 +33,7 @@ public class OrderController {
 
         logger.info(prodServiceUrl);
         // prod 서비스 호출
+        /*
         ResponseEntity<String> prodServiceResponse = restTemplate.getForEntity(
                 prodServiceUrl, String.class);
 
@@ -46,8 +47,9 @@ public class OrderController {
         HashMap<String, Object> orderResponse = new HashMap<String, Object>();
         orderResponse.put("prod", prodServiceResponse.getBody());
         orderResponse.put("point", pointServiceResponse.getBody());
+        */
 
-        return ResponseEntity.status(HttpStatus.OK).body(orderResponse);
+        return ResponseEntity.status(HttpStatus.OK).body("orderResponse");
     }
 
 }
