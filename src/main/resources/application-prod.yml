@@ -22,3 +22,6 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 logging.level.root : info
+
+msa.service.endpoint.prod : ${PROD_SERVICE_ENDPOINT}
+msa.service.endpoint.point: ${POINT_SERVICE_ENDPOINT}
