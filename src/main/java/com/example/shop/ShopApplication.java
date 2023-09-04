@@ -2,7 +2,6 @@ package com.example.shop;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 @SpringBootApplication
 public class ShopApplication {
@@ -10,7 +9,4 @@ public class ShopApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ShopApplication.class, args);
 	}
-
-
-	// java -jar boot.jar --spring.profiles.active=stage
 }
