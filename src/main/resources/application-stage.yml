@@ -21,6 +21,10 @@ spring:
     password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
 
+  redis:
+    host: ${REDIS_ENDPOINT}
+    port: 6379
+
 logging.level.root : info
 
 msa.service.endpoint.prod : ${PROD_SERVICE_ENDPOINT}

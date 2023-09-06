@@ -8,6 +8,10 @@ spring:
     username: prod/shop/mysql-8.x
     driver-class-name: com.amazonaws.secretsmanager.sql.AWSSecretsManagerMySQLDriver
 
+  redis:
+    host: ${REDIS_ENDPOINT}
+    port: 6379
+
 logging.level.root : info
 
 msa.service.endpoint.prod : ${PROD_SERVICE_ENDPOINT}
