@@ -9,11 +9,17 @@ import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.joda.time.LocalDateTime;
-import org.redisson.api.RMapCache;
 import org.redisson.api.RedissonClient;
+import org.redisson.client.codec.StringCodec;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 @Slf4j
 @RestController
@@ -24,8 +30,9 @@ public class LoginController {
     private final MemberService memberService;
     private final RedissonClient redissonClient;
 
+    private final String cacheName = "spring:session:sessions:";
     @PostMapping("/login")
-    public LoginResponse login(@RequestBody LoginRequest loginRequest,
+    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest,
                                HttpServletRequest httpServletRequest) {
         log.info("userId: " + loginRequest.getUserId());
         log.info("password: " + loginRequest.getPassword());
@@ -46,6 +53,7 @@ public class LoginController {
 
             HttpSession session = httpServletRequest.getSession(true);
             session.setAttribute("emailAddress", memberDto.getEmailAddress());
+            session.setAttribute("phoneNumber", memberDto.getPhoneNumber());
             session.setMaxInactiveInterval(1800); // Session이 30분동안 유지
             log.info("session id: " + session.getId());
 
@@ -57,37 +65,53 @@ public class LoginController {
                     .isLogined(true);
         }
 
-        return loginResponse.build();
+        return ResponseEntity.status(HttpStatus.OK).body(loginResponse.build());
     }
 
     @GetMapping("/logout")
-    public LoginResponse logout(HttpServletRequest httpServletRequest) {
+    public ResponseEntity<?> logout(HttpServletRequest httpServletRequest) {
         HttpSession session = httpServletRequest.getSession(false);  // Session이 없으면 null return
         if(session != null) {
             session.invalidate();
         }
 
-        return LoginResponse.builder()
-                .isLogined(false)
-                .build();
+        return ResponseEntity.status(HttpStatus.OK).body(
+                LoginResponse.builder()
+                    .isLogined(false)
+                    .build());
     }
 
     @GetMapping("/info")
-    public LoginResponse info(HttpServletRequest httpServletRequest) {
-        HttpSession session = httpServletRequest.getSession(false);  // Session이 없으면 null return
-        String sessionId = session.getId();
-        log.info("session... " + sessionId);
+    public ResponseEntity<?> info(HttpServletRequest httpServletRequest) {
+        HttpSession session = httpServletRequest.getSession(false);
+        if(session == null)
+            return ResponseEntity.status(HttpStatus.OK).body("Session is null...");
 
+        /*
+        RKeys keys = redissonClient.getKeys();
+        Iterable<String> allKeys = keys.getKeys();
+        for (String key: allKeys)
+            log.info("... " + key);
+        RMapCache<String, String> rMapCache = redissonClient.getMapCache(cacheName + sessionId);
+        System.out.println("phone " + rMapCache.get("maxInactiveInterval"));
+        System.out.println(rMapCache.getName());
+        */
 
-        RMapCache mycache;
-        mycache=redissonClient.getMapCache("spring:session:sessions:" + sessionId);
-        log.info((String) mycache.get("emailAddress"));
-       // Collection<> map=mycache.readAllValues();
-       // System.out.println(map);
+        Map<Object, Object> returnMap = new HashMap<>();
+        returnMap.put("sessionId", session.getId());
 
-        // redis 에서 조회해서 return 한다.
-        // session 이 null 인 경우도 체크한다.
-        return null;
+        Set<Map.Entry<Object, Object>> entrySet = redissonClient
+                .getMap(cacheName + session.getId(), StringCodec.INSTANCE)
+                .readAllEntrySet();
+        Iterator<Map.Entry<Object, Object>> iterator = entrySet.iterator();
+
+        while(iterator.hasNext()) {
+            Map.Entry<Object, Object> entry = iterator.next();
+            if(((String)entry.getKey()).startsWith("sessionAttr"))
+                returnMap.put(((String) entry.getKey()).split(":")[1], entry.getValue());
+        }
+
+        return ResponseEntity.status(HttpStatus.OK).body(returnMap);
     }
 
 }
