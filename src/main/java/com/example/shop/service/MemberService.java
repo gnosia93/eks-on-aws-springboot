@@ -40,10 +40,7 @@ public class MemberService {
     public MemberDto findMember(Integer memberId) throws MemberNotFoundException {
         Optional<Member> optMember = memberRepository.findById(memberId);
 
-        // Member member = optMember.orElseThrow(MemberNotFoundException::new);
-        if(!optMember.isPresent())
-            return null;
-        Member member = optMember.get();
+        Member member = optMember.orElseThrow(MemberNotFoundException::new);
         return MemberDto.builder()
                 .memberId(member.getMemberId())
                 .password(member.getPassword())

@@ -34,7 +34,7 @@ public class LoginController {
         LoginResponse.LoginResponseBuilder loginResponse = LoginResponse.builder();
         loginResponse.isLogined(false);
 
-        if(memberDto != null && memberDto.getPassword() != null
+        if(memberDto.getPassword() != null
                 && memberDto.getPassword().equals(loginRequest.getPassword())) {
 
             HttpSession prevSession = httpServletRequest.getSession();
