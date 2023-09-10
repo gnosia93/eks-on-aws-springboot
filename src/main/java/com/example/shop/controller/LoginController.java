@@ -9,6 +9,8 @@ import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.joda.time.LocalDateTime;
+import org.redisson.api.RMapCache;
+import org.redisson.api.RedissonClient;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
@@ -20,6 +22,7 @@ import java.text.SimpleDateFormat;
 public class LoginController {
 
     private final MemberService memberService;
+    private final RedissonClient redissonClient;
 
     @PostMapping("/login")
     public LoginResponse login(@RequestBody LoginRequest loginRequest,
@@ -73,6 +76,14 @@ public class LoginController {
     public LoginResponse info(HttpServletRequest httpServletRequest) {
         HttpSession session = httpServletRequest.getSession(false);  // Session이 없으면 null return
         String sessionId = session.getId();
+        log.info("session... " + sessionId);
+
+
+        RMapCache mycache;
+        mycache=redissonClient.getMapCache("spring:session:sessions:" + sessionId);
+        log.info((String) mycache.get("emailAddress"));
+       // Collection<> map=mycache.readAllValues();
+       // System.out.println(map);
 
         // redis 에서 조회해서 return 한다.
         // session 이 null 인 경우도 체크한다.
