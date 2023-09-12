@@ -60,6 +60,9 @@ public class MemberController {
     @RequestMapping(value="/point/{memberId}", method=RequestMethod.GET)
     public ResponseEntity<?> getMemberPoint(@PathVariable Integer memberId) {
 
+       // logger.info("Incoming request at {} for request /path1 ", applicationName);
+        String response = restTemplate.getForObject("http://localhost:8090/service/path2", String.class);
+       // return ResponseEntity.ok("response from /path1 + " + response);
 
         return ResponseEntity.status(HttpStatus.OK).body("");
     }
