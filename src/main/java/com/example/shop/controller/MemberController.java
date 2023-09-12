@@ -1,5 +1,6 @@
 package com.example.shop.controller;
 
+import com.example.shop.configuration.MsaServiceConfiguration;
 import com.example.shop.dto.MemberDto;
 import com.example.shop.exception.MemberNotFoundException;
 import com.example.shop.service.MemberService;
@@ -12,7 +13,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RequiredArgsConstructor
 @RequestMapping(value="/member")
@@ -20,6 +23,9 @@ import java.util.List;
 public class MemberController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
+    private final MsaServiceConfiguration msaServiceConfiguration;
+
     private final RestTemplate restTemplate;
     @Autowired
     private MemberService memberService;
@@ -57,14 +63,17 @@ public class MemberController {
     }
 
     @ResponseBody
-    @RequestMapping(value="/point/{memberId}", method=RequestMethod.GET)
+    @RequestMapping(value="/benefit/{memberId}", method=RequestMethod.GET)
     public ResponseEntity<?> getMemberPoint(@PathVariable Integer memberId) {
 
-       // logger.info("Incoming request at {} for request /path1 ", applicationName);
-        String response = restTemplate.getForObject("http://localhost:8090/service/path2", String.class);
-       // return ResponseEntity.ok("response from /path1 + " + response);
+        String benefitUrl = msaServiceConfiguration.getBenefit() + "/" + memberId;
+        String benefitResponse = restTemplate.getForObject(benefitUrl, String.class);
 
-        return ResponseEntity.status(HttpStatus.OK).body("");
+        Map<String, Object> responseMap = new HashMap<>();
+        responseMap.put("memberId", memberId);
+        responseMap.put("benefit", benefitResponse);
+
+        return ResponseEntity.status(HttpStatus.OK).body(responseMap);
     }
 
 }

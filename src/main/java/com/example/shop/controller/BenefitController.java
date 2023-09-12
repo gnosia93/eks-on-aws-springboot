@@ -22,10 +22,11 @@ public class BenefitController {
     @RequestMapping(value="/{memberId}", method= RequestMethod.GET)
     public ResponseEntity<?> getPoint(@PathVariable Integer memberId) {
 
-        Map<Integer, Integer> pointMap = new HashMap<>();
-        pointMap.put(memberId, getRandomPoint(1, 1000));
+        Map<String, Integer> responseMap = new HashMap<>();
+        responseMap.put("point", getRandomPoint(1, 1000));
+        responseMap.put("accumulate", getRandomPoint(1, 30000));
 
-        return ResponseEntity.status(HttpStatus.OK).body("");
+        return ResponseEntity.status(HttpStatus.OK).body(responseMap);
     }
 
     private int getRandomPoint(int min, int max) {

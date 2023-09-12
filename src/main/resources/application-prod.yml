@@ -14,5 +14,6 @@ spring:
 
 logging.level.root : info
 
+msa.service.endpoint.benefit: ${BENEFIT_SERVICE_ENDPOINT}
 msa.service.endpoint.prod : ${PROD_SERVICE_ENDPOINT}
 msa.service.endpoint.point: ${POINT_SERVICE_ENDPOINT}
