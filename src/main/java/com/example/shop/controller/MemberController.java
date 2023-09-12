@@ -1,21 +1,26 @@
 package com.example.shop.controller;
 
 import com.example.shop.dto.MemberDto;
-import com.example.shop.service.MemberService;
 import com.example.shop.exception.MemberNotFoundException;
+import com.example.shop.service.MemberService;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
+
 import java.util.List;
 
+@RequiredArgsConstructor
 @RequestMapping(value="/member")
 @RestController
 public class MemberController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final RestTemplate restTemplate;
     @Autowired
     private MemberService memberService;
 
@@ -49,6 +54,14 @@ public class MemberController {
     public ResponseEntity<?> updateMember(@PathVariable Integer memberId, @RequestBody MemberDto memberDto ) throws MemberNotFoundException {
         MemberDto updatedMemberDto = memberService.updateMember(memberId, memberDto);
         return ResponseEntity.status(HttpStatus.OK).body(updatedMemberDto);
+    }
+
+    @ResponseBody
+    @RequestMapping(value="/point/{memberId}", method=RequestMethod.GET)
+    public ResponseEntity<?> getMemberPoint(@PathVariable Integer memberId) {
+
+
+        return ResponseEntity.status(HttpStatus.OK).body("");
     }
 
 }
