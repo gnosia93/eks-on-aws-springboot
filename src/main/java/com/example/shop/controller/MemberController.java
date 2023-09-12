@@ -64,7 +64,7 @@ public class MemberController {
 
     @ResponseBody
     @RequestMapping(value="/benefit/{memberId}", method=RequestMethod.GET)
-    public ResponseEntity<?> getMemberPoint(@PathVariable Integer memberId) {
+    public ResponseEntity<?> getMemberBenefit(@PathVariable Integer memberId) {
 
         String benefitUrl = msaServiceConfiguration.getBenefit() + "/" + memberId;
         String benefitResponse = restTemplate.getForObject(benefitUrl, String.class);
