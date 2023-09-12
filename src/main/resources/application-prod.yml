@@ -13,7 +13,7 @@ spring:
     port: 6379
 
 tracing:
-  url: http://${EKS-MYSQL_EXPORTER_EC2}:4318/v1/traces
+  url: http://${EKS_MYSQL_EXPORTER}:4318/v1/traces
 
 logging.level.root : info
 
