@@ -1,18 +1,22 @@
 package com.example.shop.service;
 
 import io.micrometer.observation.annotation.Observed;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.Random;
 
 
+@Slf4j
 @Service
 public class BenefitService {
 
     @Observed(name = "user.name",
             contextualName = "getTotalPoint",
             lowCardinalityKeyValues = {"userType", "userType2"})
-    public int getTotalPoint(String userId) {
+    public int getTotalPoint(int userId) {
+        log.info("Getting user name for user with id <{}>", userId);
+
         final Random random = new Random();
         try {
             Thread.sleep(random.nextLong(200L));

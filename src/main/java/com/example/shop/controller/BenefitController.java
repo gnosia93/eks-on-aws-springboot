@@ -33,7 +33,8 @@ public class BenefitController {
 
 
     @GetMapping("/user/{userId}")
-    public ResponseEntity<?> getTotalPoint(@PathVariable("userId") String userId) {
+    public ResponseEntity<?> getTotalPoint(@PathVariable("userId") int userId) {
+        log.info("Got a request");
 
         Map<String, Object> responseMap = new HashMap<>();
         responseMap.put("userId", userId);
