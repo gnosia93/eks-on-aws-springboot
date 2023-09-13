@@ -12,11 +12,7 @@ spring:
     host: ${REDIS_ENDPOINT}
     port: 6379
 
-tracing:
-  url: http://${EKS_MYSQL_EXPORTER}:4318/v1/traces
-
 logging.level.root : info
 
-msa.service.endpoint.benefit: benefit.default.svc.cluster.local
 msa.service.endpoint.prod : ${PROD_SERVICE_ENDPOINT}
 msa.service.endpoint.point: ${POINT_SERVICE_ENDPOINT}
