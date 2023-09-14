@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 public class MsaServiceConfiguration {
         private String prod;
         private String point;
-
         private String benefit;
 }
 

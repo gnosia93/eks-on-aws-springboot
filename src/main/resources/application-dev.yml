@@ -28,6 +28,9 @@ spring:
       store-type:redis
 
 logging.level.root : info
+backend.loki.url: "http://localhost:3100/loki/api/v1/push"
 
 msa.service.endpoint.prod : "http://localhost:3001/prod"
 msa.service.endpoint.point: "http://localhost:3000/point"
+
+log.endpoint.lokiUrl: "http://localhost:3100/loki/api/v1/push"

@@ -29,3 +29,5 @@ logging.level.root : info
 
 msa.service.endpoint.prod : ${PROD_SERVICE_ENDPOINT}
 msa.service.endpoint.point: ${POINT_SERVICE_ENDPOINT}
+
+log.endpoint.lokiUrl: ${LOKI_URL}
