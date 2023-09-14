@@ -17,27 +17,14 @@ import java.util.Map;
 public class BenefitController {
 
     private final BenefitService benefitService;
-   // private final RestTemplate restTemplate;
 
     @ResponseBody
     @RequestMapping(value="/{memberId}", method= RequestMethod.GET)
     public ResponseEntity<?> getPoint(@PathVariable Integer memberId) {
 
-        Map<String, Integer> responseMap = new HashMap<>();
-        responseMap.put("point", benefitService.getRandomPoint(1, 1000));
-        responseMap.put("accumulate", benefitService.getRandomPoint(1, 30000));
-
-        return ResponseEntity.status(HttpStatus.OK).body(responseMap);
-    }
-
-
-    @GetMapping("/user/{userId}")
-    public ResponseEntity<?> getTotalPoint(@PathVariable("userId") int userId) {
-        log.info("Got a request");
-
         Map<String, Object> responseMap = new HashMap<>();
-        responseMap.put("userId", userId);
-        responseMap.put("accumulate", benefitService.getTotalPoint(userId));
+        responseMap.put("memberId", memberId);
+        responseMap.put("accumulate", benefitService.getTotalPoint(memberId));
 
         return ResponseEntity.status(HttpStatus.OK).body(responseMap);
     }

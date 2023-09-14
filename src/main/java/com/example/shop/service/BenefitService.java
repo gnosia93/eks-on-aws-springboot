@@ -28,7 +28,7 @@ public class BenefitService {
         return getRandomPoint(100, 10000);
     }
 
-    public int getRandomPoint(int min, int max) {
+    private int getRandomPoint(int min, int max) {
         return (int) ((Math.random() * (max - min)) + min);
     }
 }
