@@ -4,7 +4,8 @@
     <springProperty scope="context" name="appName" source="spring.application.name"/>
 
     <!-- springProperty 는 동작하지 않는다. 왜 일까? -->
-    <!--springProperty scope="context" name="LOKI_URL" source="log.endpoint.lokiUrl" /-->
+    <springProperty scope="context" name="LOKI_URL" source="log.endpoint.lokiUrl"
+                    defaultvalue="http://localhost:3100/loki/api/v1/push" />
     <!-- logback property 은 동작한다. -->
     <!--property name="LOKI_URL" value="http://localhost:3100/loki/api/v1/push"/-->
 
@@ -15,22 +16,28 @@
             </pattern>
         </encoder>
     </appender>
-    <appender name="LOKI" class="com.github.loki4j.logback.Loki4jAppender">
-        <http>
-            <url>${LOKI_URL}</url>
-        </http>
-        <format>
-            <label>
-                <pattern>app=${appName},host=${HOSTNAME},traceID=%X{traceId:-NONE},level=%level</pattern>
-            </label>
-            <message>
-                <pattern>${FILE_LOG_PATTERN}</pattern>
-            </message>
-            <sortByTime>true</sortByTime>
-        </format>
-    </appender>
-    <root level="INFO">
-        <appender-ref ref="CONSOLE" />
-        <appender-ref ref="LOKI"/>
-    </root>
+    <springProfile name="dev,stage,prod">
+        <appender name="LOKI" class="com.github.loki4j.logback.Loki4jAppender">
+            <http>
+                <url>${LOKI_URL}</url>
+            </http>
+            <format>
+                <label>
+                    <pattern>app=${appName},host=${HOSTNAME},traceID=%X{traceId:-NONE},level=%level</pattern>
+                </label>
+                <message>
+                    <pattern>${FILE_LOG_PATTERN}</pattern>
+                </message>
+                <sortByTime>true</sortByTime>
+            </format>
+        </appender>
+    </springProfile>
+
+    <springProfile name="dev,stage,prod">
+        <root level="INFO">
+            <appender-ref ref="CONSOLE" />
+            <appender-ref ref="LOKI"/>
+        </root>
+    </springProfile>
+
 </configuration>

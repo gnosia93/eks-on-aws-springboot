@@ -26,6 +26,9 @@ public class BenefitController {
         responseMap.put("memberId", memberId);
         responseMap.put("accumulate", benefitService.getTotalPoint(memberId));
 
+        //System.out.println("...." + System.getProperty("java.class.path"));
+
+
         return ResponseEntity.status(HttpStatus.OK).body(responseMap);
     }
 }

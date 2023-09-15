@@ -32,4 +32,4 @@ logging.level.root : info
 msa.service.endpoint.prod : "http://localhost:3001/prod"
 msa.service.endpoint.point: "http://localhost:3000/point"
 
-log.endpoint.lokiUrl: "http://localhost-2:3100/loki/api/v1/push"
+log.endpoint.lokiUrl: "http://localhost:3100/loki/api/v1/push"
